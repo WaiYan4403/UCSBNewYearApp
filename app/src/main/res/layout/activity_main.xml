@@ -13,17 +13,6 @@
         android:src="@drawable/ucsb_logo"
         android:alpha="0.1"/>
     <TextView
-        android:id="@+id/txtSize"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:text="0"
-        android:textAlignment="center"
-        android:textSize="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/txtresult"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <TextView
         android:id="@+id/txtresult"
         android:layout_width="match_parent"
         android:layout_height="150dp"
