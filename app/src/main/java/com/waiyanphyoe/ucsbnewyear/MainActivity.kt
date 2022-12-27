@@ -8,14 +8,18 @@ import android.widget.TextView
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
-    lateinit var txtResult:TextView
+    lateinit var txtNum1:TextView
+    lateinit var txtNum2:TextView
+    lateinit var txtNum3:TextView
     var usedNumbers = ArrayList<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val btnPick:Button = findViewById(R.id.btnPick)
-        txtResult = findViewById(R.id.txtresult)
+        txtNum1 = findViewById(R.id.txtNum1)
+        txtNum2 = findViewById(R.id.txtNum2)
+        txtNum3 = findViewById(R.id.txtNum3)
 
         btnPick.setOnClickListener {
             pickRandomNumber()
@@ -24,7 +28,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun pickRandomNumber(){
         if(usedNumbers.size >= 280){
-            txtResult.text = "END"
+            txtNum1.text = "E"
+            txtNum2.text = "N"
+            txtNum3.text = "D"
         }
         else{
             var randNum = 0
@@ -32,9 +38,10 @@ class MainActivity : AppCompatActivity() {
                 randNum = Random().nextInt(281)
             }while (usedNumbers.contains(randNum))
             usedNumbers.add(randNum)
-            txtResult.text = "---"
+            txtNum1.text = "-"
+            txtNum2.text = "-"
+            txtNum3.text = "-"
             var strNumber = randNum.toString()
-            var strResult = ""
 
             if(strNumber.length == 1){
                 strNumber = "00" + strNumber
@@ -43,21 +50,16 @@ class MainActivity : AppCompatActivity() {
                 strNumber = "0" + strNumber
             }
             Handler().postDelayed({
-                strResult += strNumber.get(0)
+                txtNum1.text = strNumber.get(0).toString()
                 //txtResult.text = String.format("%03d", randNum)
-                txtResult.text = "$strResult--"
             },1000)
             Handler().postDelayed({
-                strResult += strNumber.get(1)
-
+                txtNum2.text = strNumber.get(1).toString()
                 //txtResult.text = String.format("%03d", randNum)
-                txtResult.text = "$strResult-"
             },2000)
             Handler().postDelayed({
-                strResult += strNumber.get(2)
-
+                txtNum3.text = strNumber.get(2).toString()
                 //txtResult.text = String.format("%03d", randNum)
-                txtResult.text = "$strResult"
             },3000)
         }
     }
